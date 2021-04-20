@@ -14,7 +14,7 @@
 
 ### 1.2初识Flink
 
-![image-20210419165531856](/images/flink_logo.png)
+![image-20210419165531856](https://github.com/catxjd/flink_study/blob/master/Flink/images/flink_logo.png?raw=true)
 
 
 
