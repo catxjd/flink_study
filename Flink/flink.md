@@ -28,7 +28,7 @@
 
 ​		Flink Runtime执行引擎可以作为YARN的应用程序在集群上运行，也可以在Mesos集群上运行，还可以在单机上运行。
 
-![image-20210419165531857](https://github.com/catxjd/flink_study/tree/master/Flink/images/Flink核心计算框架.png)
+![image-20210419165531857](https://github.com/catxjd/flink_study/blob/master/Flink/images/Flink%E6%A0%B8%E5%BF%83%E8%AE%A1%E7%AE%97%E6%A1%86%E6%9E%B6.png?raw=true)
 
 
 
@@ -61,7 +61,7 @@ Flink用于处理有界和无界数据：
 **无界数据流**：**<font color='red'>无界数据流有一个开始但是没有结束</font>**，它们不会在生成时终止并提供数据，必须连续处理无界流，也就是说必须在获取后立即处理event。对于无界数据流我们无法等待所有数据都到达，因为输入是无界的，并且在任何时间点都不会完成。处理无界数据通常要求以特定顺序（例如事件发生的顺序）获取event，以便能够推断结果完整性，无界流的处理称为流处理。 		
  **有界数据流**：**<font color='red'>有界数据流有明确定义的开始和结束</font>**，可以在执行任何计算之前通过获取所有数据来处理有界流，处理有界流不需要有序获取，因为可以始终对有界数据集进行排序，有界流的处理也称为批处理。
 
-![avatar](\images\有界流和无界流.png)
+![avatar](https://github.com/catxjd/flink_study/blob/master/Flink/images/%E6%9C%89%E7%95%8C%E6%B5%81%E5%92%8C%E6%97%A0%E7%95%8C%E6%B5%81.png?raw=true)
 
 
 
@@ -81,7 +81,7 @@ Flink用于处理有界和无界数据：
 
 <font size=2>Flink提供了不同级别的抽象，以开发流或批处理作业，如下图所示</font>
 
-![streammodel](https://github.com/catxjd/flink_study/tree/master/Flink/images/流编程模型.png)
+![streammodel](https://github.com/catxjd/flink_study/blob/master/Flink/images/%E6%B5%81%E7%BC%96%E7%A8%8B%E6%A8%A1%E5%9E%8B.png?raw=true)
 
 
 
@@ -101,7 +101,7 @@ Flink用于处理有界和无界数据：
 
 ###   3.1 任务提交流程
 
-![任务提交流程](https://github.com/catxjd/flink_study/tree/master/Flink/images/任务提交流程.png)
+![任务提交流程](https://github.com/catxjd/flink_study/blob/master/Flink/images/%E4%BB%BB%E5%8A%A1%E6%8F%90%E4%BA%A4%E6%B5%81%E7%A8%8B.png?raw=true)
 
 
 
@@ -115,7 +115,7 @@ Flink用于处理有界和无界数据：
 
 ​		 **<font color='red'>通过调整task slot的数量，允许用户定义subtask之间如何互相隔离</font>**。如果一个TaskManager一个slot，那将意味着每个task group运行在独立的JVM中（该JVM可能是通过一个特定的容器启动的），而一个TaskManager多个slot意味着更多的subtask可以共享同一个JVM。而在同一个JVM进程中的task将共享TCP连接（基于多路复用）和心跳消息。它们也可能共享数据集和数据结构，因此这减少了每个task的负载。
 
-![slots](https://github.com/catxjd/flink_study/tree/master/Flink/images/slots.png)
+![slots](https://github.com/catxjd/flink_study/blob/master/Flink/images/slots.png?raw=true)
 
 
 
@@ -127,7 +127,7 @@ Flink用于处理有界和无界数据：
 
 ###  4.1 Flink运行模型
 
-![Flink运行模型.png](https://github.com/catxjd/flink_study/tree/master/Flink/images/Flink运行模型.png)
+![Flink运行模型.png](https://github.com/catxjd/flink_study/blob/master/Flink/images/Flink%E8%BF%90%E8%A1%8C%E6%A8%A1%E5%9E%8B.png?raw=true)
 
 
 
@@ -343,7 +343,7 @@ SingleOutputStreamOperator<Entity> result = StreamRecord
 
 #### 4.6.4 Connect
 
-![Connect算子.png](https://github.com/catxjd/flink_study/tree/master/Flink/images/Connect算子.png)
+![Connect算子.png](https://github.com/catxjd/flink_study/blob/master/Flink/images/Connect%E7%AE%97%E5%AD%90.png?raw=true)
 
 ​		**DataStream,DataStream → ConnectedStreams**：连接两个保持他们类型的数据流，两个数据流被Connect之后，只是被放在了一个同一个流中，内部依然保持各自的数据和形式不发生任何变化，两个流相互独立。
 
@@ -351,13 +351,13 @@ SingleOutputStreamOperator<Entity> result = StreamRecord
 
 ####  4.6.5 CoMap,CoFlatMap
 
-![comap](https://github.com/catxjd/flink_study/tree/master/Flink/images/comap.png)
+![comap](https://github.com/catxjd/flink_study/blob/master/Flink/images/coMap.png?raw=true)
 
 ​		**ConnectedStreams → DataStream**：作用于ConnectedStreams上，功能与map和flatMap一样，对ConnectedStreams中的每一个Stream分别进行map和flatMap处理。 
 
 #### 4.6.6 split
 
-![split](https://github.com/catxjd/flink_study/tree/master/Flink/images/split.png)
+![split](https://github.com/catxjd/flink_study/blob/master/Flink/images/split.png?raw=true)
 
 ​		**DataStream → SplitStream**：根据某些特征把一个DataStream拆分成两个或者多个DataStream。
 
@@ -382,7 +382,7 @@ SplitStream<UserBehavior> splitStream = dataStream.split(new OutputSelector<User
 
 #### 4.6.7 select
 
-![select](https://github.com/catxjd/flink_study/tree/master/Flink/images/select.png)
+![select](https://github.com/catxjd/flink_study/blob/master/Flink/images/select.png?raw=true)
 
 ​		**SplitStream→DataStream**：从一个SplitStream中获取一个或者多个DataStream。
 
@@ -397,7 +397,7 @@ DataStream<UserBehavior> pvdataStream = splitStream.select("pv");
 
 #### 4.6.8 Union
 
-<img src="https://github.com/catxjd/flink_study/tree/master/Flink/images/union.png" alt="union" style="zoom:50%;" />
+<img src="https://github.com/catxjd/flink_study/blob/master/Flink/images/union.png?raw=true" alt="union" style="zoom:50%;" />
 
 ​		**DataStream → DataStream**：对两个或者两个以上的DataStream进行union操作，产生一个包含所有DataStream元素的新DataStream。注意:如果你将一个DataStream跟它自己做union操作，在新的DataStream中，你将看到每一个元素都出现两次。
 
@@ -455,7 +455,7 @@ cartdataStream.union(pvdataStream).print();
 
 在Flink的流式处理中，会涉及到时间的不同概念，如下图所示：
 
-![flink_time](https://github.com/catxjd/flink_study/tree/master/Flink/images/flink_time.png)
+![flink_time](https://github.com/catxjd/flink_study/blob/master/Flink/images/flink_time.png?raw=true)
 
 ​	**Event Time**：是事件创建的时间。它通常由事件中的时间戳描述，例如采集的日志数据中，每一条日志都会记录自己的生成时间，Flink通过时间戳分配器访问事件时间戳。
 
@@ -494,7 +494,7 @@ window可以分为两类：
 
 滚动窗口分配器将每个元素分配到一个指定窗口大小的窗口中，滚动窗口有一个固定的大小，并且不会出现重叠。例如：如果你指定了一个5分钟大小的滚动窗口，窗口的创建如下图所示： 
 
-![滚动窗口](/images/滚动窗口.png)
+![滚动窗口](https://github.com/catxjd/flink_study/blob/master/Flink/images/%E6%BB%9A%E5%8A%A8%E7%AA%97%E5%8F%A3.png?raw=true)
 
 **适用场景**：适合做BI统计等（做 每个时间段的聚合计算）。
 
@@ -508,7 +508,7 @@ window可以分为两类：
 
 ​		 例如，你有10分钟的窗口和5分钟的滑动，那么每个窗口中5分钟的窗口里包含着上个10分钟产生的数据，如下图所示： 
 
-![滑动窗口](https://github.com/catxjd/flink_study/tree/master/Flink/images/滑动窗口.png)
+![滑动窗口](https://github.com/catxjd/flink_study/blob/master/Flink/images/%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3.png?raw=true)
 
 **适用场景**：对最近一个时间段内的统计（求某接口最近5min的失败率来决定是否要报警）。 
 
@@ -520,7 +520,7 @@ window可以分为两类：
 
    ​		session窗口分配器通过session活动来对元素进行分组，session窗口跟滚动窗口和滑动窗口相比，不会有重叠和固定的开始时间和结束时间的情况，相反，**当它在一个固定的时间周期内不再收到元素，即非活动间隔产生，那个这个窗口就会关闭**。一个session窗口通过一个session间隔来配置，这个session间隔定义了非活跃周期的长度，当这个非活跃周期产生，那么当前的session将关闭并且后续的元素将被分配到新的session窗口中去。
 
-![会话窗口](https://github.com/catxjd/flink_study/tree/master/Flink/images/会话窗口.png)
+![会话窗口](https://github.com/catxjd/flink_study/blob/master/Flink/images/%E4%BC%9A%E8%AF%9D%E7%AA%97%E5%8F%A3.png?raw=true)
 
 ### 5.3 Window API
 
@@ -668,7 +668,7 @@ StreamExecutionEnvironment env = StreamExecutionEnvironment.getExecutionEnvironm
 
 ​		我们知道，流处理从事件产生，到流经source，再到operator，中间有一个过程和时间的，虽然大部分情况下，留到operator的数据都是按照事件产生的时间顺序来的，但是也不排除由于网络原因，导致乱序的产生，所谓乱序，就是指Flink接受到的事件的先后顺序不是严格按照事件的Event Time顺序排列的。
 
-![watermark](https://github.com/catxjd/flink_study/tree/master/Flink/images/watermark.png)
+![watermark](https://github.com/catxjd/flink_study/blob/master/Flink/images/watermark.png?raw=true)
 
 ​		那么此时出现一个问题，一旦出现乱序，如果只根据eventime决定window的运行，我们不能明确数据是否全部到位，但又不能无限期的等下去，此时必须要有一个机制来保证一个特定的时间后，必须触发window去计算了，这个特别的机制就是watermark。
 
@@ -735,7 +735,7 @@ DataStream<ApacheLogEvent> dataStream = inputStream
 
 我们通过下图来说明Watermark、EventTime和Window的关系。
 
-![watermark关系图](https://github.com/catxjd/flink_study/tree/master/Flink/images/watermark关系图.png)
+![watermark关系图](https://github.com/catxjd/flink_study/blob/master/Flink/images/watermark%E5%85%B3%E7%B3%BB%E5%9B%BE.png?raw=true)
 
 #### 6.3.1 滚动窗口（TumblingEventTimeWindows）
 
